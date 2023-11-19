@@ -38,6 +38,10 @@ else
   : "${DENO_PUSH_RELEASE_TAG:="v$DENO_PUSH_VERSION"}"
 fi
 
+if [[ -z $GITHUB_TOKEN ]]; then
+  git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: bearer $GITHUB_TOKEN"
+fi
+
 mkdir atty
 cd atty
 git clone $DENO_PUSH_REMOTE_URL
