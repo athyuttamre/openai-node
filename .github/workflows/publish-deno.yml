@@ -33,7 +33,7 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          repositories: "athyuttamre/openai-node,athyuttamre/openai-deno-build"
+          repositories: "github.com/athyuttamre/openai-node,github.com/athyuttamre/openai-deno-build"
 
       - name: Publish to Deno
         run: |
