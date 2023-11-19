@@ -21,10 +21,6 @@ jobs:
           repositories: "openai-node,openai-deno-build"
 
       - uses: actions/checkout@v3
-        with:
-          # Also persists credentials to the local git config, which allows future steps to access
-          # the openai-deno-build repo.
-          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Set up Node
         uses: actions/setup-node@v3
