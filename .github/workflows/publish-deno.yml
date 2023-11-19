@@ -40,5 +40,5 @@ jobs:
         run: |
           bash ./scripts/git-publish-deno.sh
         env:
-          DENO_PUSH_REMOTE_URL: https://openai-open-source:${{ steps.generate_token.outputs.token }}@github.com/athyuttamre/openai-deno-build.git
+          DENO_PUSH_REMOTE_URL: https://username:${{ steps.generate_token.outputs.token }}@github.com/athyuttamre/openai-deno-build.git
           DENO_PUSH_BRANCH: main

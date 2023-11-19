@@ -30,8 +30,8 @@ die () {
 : "${DENO_PUSH_BRANCH:=deno}"
 : "${DENO_MAIN_BRANCH:=main}"
 : "${DENO_PUSH_REMOTE_URL:=$(git remote get-url origin)}"
-# : "${DENO_GIT_USER_NAME:="Stainless Bot"}"
-# : "${DENO_GIT_USER_EMAIL:="bot@stainlessapi.com"}"
+: "${DENO_GIT_USER_NAME:="Stainless Bot"}"
+: "${DENO_GIT_USER_EMAIL:="bot@stainlessapi.com"}"
 if [[ $DENO_PUSH_BRANCH = "deno" ]]; then
   : "${DENO_PUSH_RELEASE_TAG:="v$DENO_PUSH_VERSION-deno"}"
 else
@@ -64,8 +64,8 @@ else
   git checkout -b "$DENO_PUSH_BRANCH"
 fi
 
-# git config user.email "$DENO_GIT_USER_EMAIL"
-# git config user.name "$DENO_GIT_USER_NAME"
+git config user.email "$DENO_GIT_USER_EMAIL"
+git config user.name "$DENO_GIT_USER_NAME"
 
 git add .
 git commit -m "chore(deno): release $DENO_PUSH_VERSION"
