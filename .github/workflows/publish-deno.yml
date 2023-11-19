@@ -17,7 +17,14 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: "athyuttamre"
           repositories: "openai-node,openai-deno-build"
+
+      - name: Persist credentials
+        id: persist_credentials
+        run: gh auth setup-git -h github.com
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
       - uses: actions/checkout@v3
 
