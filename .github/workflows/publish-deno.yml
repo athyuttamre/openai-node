@@ -26,6 +26,11 @@ jobs:
           # the openai-deno-build repo.
           token: ${{ steps.generate_token.outputs.token }}
 
+      # Test checkout of openai-deno-build works using credentials persisted above.
+      - uses: actions/checkout@v3
+        with:
+          repository: openai-deno-build
+
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
