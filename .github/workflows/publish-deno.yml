@@ -11,6 +11,14 @@ jobs:
     environment: publish
 
     steps:
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          repositories: "openai-node,openai-deno-build"
+
       - uses: actions/checkout@v3
 
       - name: Set up Node
@@ -26,14 +34,6 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-
-      - name: Generate a token
-        id: generate_token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-          repositories: "github.com/athyuttamre/openai-node,github.com/athyuttamre/openai-deno-build"
 
       - name: Publish to Deno
         run: |
