@@ -75,5 +75,6 @@ git config user.name "$DENO_GIT_USER_NAME"
 git add .
 git commit -m "chore(deno): release $DENO_PUSH_VERSION"
 git tag -a "$DENO_PUSH_RELEASE_TAG" -m "release $DENO_PUSH_VERSION"
+git remote -v
 git push --tags --set-upstream origin "$DENO_PUSH_BRANCH"
 rm -rf .git
