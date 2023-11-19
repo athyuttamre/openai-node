@@ -38,6 +38,11 @@ else
   : "${DENO_PUSH_RELEASE_TAG:="v$DENO_PUSH_VERSION"}"
 fi
 
+mkdir atty
+cd atty
+git clone $DENO_PUSH_REMOTE_URL
+cd ..
+
 if [ ! -e deno ]; then ./build; fi
 
 # We want to commit and push a branch where everything inside the deno
