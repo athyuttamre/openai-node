@@ -38,9 +38,12 @@ else
   : "${DENO_PUSH_RELEASE_TAG:="v$DENO_PUSH_VERSION"}"
 fi
 
+echo "checking github_token"
 if [[ -z $GITHUB_TOKEN ]]; then
+  echo "setting git config"
   git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: bearer $GITHUB_TOKEN"
 fi
+git config -l
 
 mkdir atty
 cd atty
