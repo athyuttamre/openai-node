@@ -20,13 +20,11 @@ jobs:
           owner: "athyuttamre"
           repositories: "openai-node,openai-deno-build"
 
-      - name: Persist credentials
-        id: persist_credentials
-        run: gh auth setup-git -h github.com
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-
       - uses: actions/checkout@v3
+        with:
+          # Also persists credentials to the local git config, which allows future steps to access
+          # the openai-deno-build repo.
+          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Set up Node
         uses: actions/setup-node@v3
