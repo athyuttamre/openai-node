@@ -29,7 +29,7 @@ jobs:
       # Test checkout of openai-deno-build works using credentials persisted above.
       - uses: actions/checkout@v3
         with:
-          repository: openai-deno-build
+          repository: athyuttamre/openai-deno-build
 
       - name: Set up Node
         uses: actions/setup-node@v3
