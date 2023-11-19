@@ -26,19 +26,19 @@ jobs:
           # the openai-deno-build repo.
           token: ${{ steps.generate_token.outputs.token }}
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+      # - name: Set up Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '16'
 
-      - name: Set up Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
+      # - name: Set up Deno
+      #   uses: denoland/setup-deno@v1
+      #   with:
+      #     deno-version: v1.x
 
-      - name: Install dependencies
-        run: |
-          yarn install
+      # - name: Install dependencies
+      #   run: |
+      #     yarn install
 
       - name: Publish to Deno
         run: |
