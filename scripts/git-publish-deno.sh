@@ -38,13 +38,6 @@ else
   : "${DENO_PUSH_RELEASE_TAG:="v$DENO_PUSH_VERSION"}"
 fi
 
-echo "checking github_token"
-if [[ -n $GITHUB_TOKEN ]]; then
-  echo "setting git config"
-  git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: bearer $GITHUB_TOKEN"
-fi
-git config -l
-
 mkdir atty
 cd atty
 git clone $DENO_PUSH_REMOTE_URL
@@ -82,6 +75,5 @@ git config user.name "$DENO_GIT_USER_NAME"
 git add .
 git commit -m "chore(deno): release $DENO_PUSH_VERSION"
 git tag -a "$DENO_PUSH_RELEASE_TAG" -m "release $DENO_PUSH_VERSION"
-git config --local "http.https://github.com/.extraheader" "AUTHORIZATION: bearer $GITHUB_TOKEN"
 git push --tags --set-upstream origin "$DENO_PUSH_BRANCH"
 rm -rf .git
